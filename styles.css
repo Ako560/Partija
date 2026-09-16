@@ -275,10 +275,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 }
 .game-card-art {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  bottom: 10px;
-  width: 42%;
+  right: 14px;
+  top: 12px;
+  bottom: 12px;
+  width: 39%;
   display: grid;
   place-items: center;
 }
@@ -318,19 +318,19 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
   line-height: 1;
 }
 .motif-main {
-  right: 14px;
-  bottom: 10px;
+  right: 38px;
+  bottom: 18px;
   font-size: clamp(44px, 9vw, 62px);
 }
 .motif-second {
-  right: 52px;
-  top: 14px;
+  right: 56px;
+  top: 16px;
   font-size: clamp(24px, 5vw, 32px);
   opacity: .55;
 }
 .motif-third {
-  left: 14px;
-  bottom: 22px;
+  left: 18px;
+  bottom: 18px;
   font-size: clamp(20px, 4vw, 28px);
   opacity: .32;
 }
@@ -342,11 +342,11 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .motif-kifameno .motif-main { font-size: clamp(40px, 8vw, 56px); }
 .game-card-arrow {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  right: 14px;
+  bottom: 14px;
   z-index: 4;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(235,207,145,.62);
@@ -910,9 +910,10 @@ label.field { display: flex; flex-direction: column; gap: 7px; color: var(--mute
   background: radial-gradient(circle at 88% 14%, rgba(255,255,255,.28), transparent 24%), linear-gradient(145deg, #dce9f7, #b6cde8 78%);
 }
 .light .game-card-arrow {
-  background: rgba(255,249,239,.82);
+  background: rgba(255,249,239,.9);
   color: #6e4b22;
   border-color: rgba(126,91,47,.26);
+  box-shadow: 0 4px 12px rgba(65,45,20,.08);
 }
 .light .game-motif::before {
   opacity: .2;
