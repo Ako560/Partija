@@ -589,19 +589,24 @@
     const selected = Object.prototype.hasOwnProperty.call(d.scores, participantId) ? d.scores[participantId] : null;
     const isAuto = d.autoAssignedId === participantId;
     const max = selectableMaxFor(game, participantId);
-    const buttons = Array.from({ length: max + 1 }, (_, i) => i)
-      .map(v => `<button class="score-btn ${selected === v ? 'selected' : ''} ${isAuto && selected === v ? 'auto' : ''}" data-score-player="${participantId}" data-score-value="${v}" ${isAuto ? 'disabled' : ''}>${v}</button>`)
-      .join('');
 
-    return `<div class="score-player">
+    // Ako je ostao samo jedan igrač/tim, njegov rezultat je matematički određen.
+    // Ne prikazujemo više beskorisne opcije 0..N nego samo automatski rezultat.
+    const buttons = isAuto && selected !== null
+      ? `<button class="score-btn selected auto auto-only" disabled>${selected}</button>`
+      : Array.from({ length: max + 1 }, (_, i) => i)
+          .map(v => `<button class="score-btn ${selected === v ? 'selected' : ''}" data-score-player="${participantId}" data-score-value="${v}">${v}</button>`)
+          .join('');
+
+    return `<div class="score-player ${isAuto ? 'auto-player' : ''}">
       <div class="score-header">
         <div>
           <div class="score-name">${esc(scoreParticipantName(game, participantId))}</div>
-          <div class="muted tiny">Ukupno ${scoreParticipantTotal(game, participantId)}</div>
+          <div class="muted tiny">${isAuto ? 'Automatski ostatak' : `Ukupno ${scoreParticipantTotal(game, participantId)}`}</div>
         </div>
-        <div class="big-score">${selected ?? '–'}</div>
+        <div class="big-score ${selected !== null ? 'has-value' : ''}">${selected ?? '–'}</div>
       </div>
-      <div class="score-buttons">${buttons}</div>
+      <div class="score-buttons ${isAuto ? 'auto-score-buttons' : ''}">${buttons}</div>
     </div>`;
   }
 
